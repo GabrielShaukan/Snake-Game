@@ -24,7 +24,7 @@ function snake(x, y, xSpeed, ySpeed) {
   //draws snake  on canvas
   this.show = function() {
     fill(255);
-    rect(this.x, this.y, 10, 10);
+    rect(this.x, this.y, scl, scl);
   }
 
 }
