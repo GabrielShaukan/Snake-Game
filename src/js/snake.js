@@ -31,6 +31,8 @@ function snake(x, y, xSpeed, ySpeed) {
      var pos= this.tail[i];
      var d = dist(this.x, this.y, pos.x, pos.y);
      if (d < 1) {
+
+       alert("Game Over, Your Score was: " + this.total);
        this.total = 0;
        this.tail = [];
      }
