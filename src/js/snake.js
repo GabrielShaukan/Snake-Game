@@ -5,7 +5,7 @@ function snake(x, y, xSpeed, ySpeed) {
   this.y = 0;
   this.xSpeed = 1;
   this.ySpeed = 0;
-  this.total= 0;
+  this.total= 1;
   this.tail = [];
 
   //changes snake direction
@@ -23,7 +23,18 @@ function snake(x, y, xSpeed, ySpeed) {
     } else {
       return false;
     }
+  }
 
+  //snake death method
+  this.death = function(x,y){
+    for (var i = 0; i < this.tail.length; i++) {
+     var pos= this.tail[i];
+     var d = dist(this.x, this.y, pos.x, pos.y);
+     if (d < 1) {
+       this.total = 0;
+       this.tail = [];
+     }
+    }
   }
 
   //makes snake move
@@ -46,7 +57,7 @@ function snake(x, y, xSpeed, ySpeed) {
   this.show = function() {
     fill(255);
 
-    for (var i = 0; i < this.total; i++) {
+    for (var i = 0; i < this.total -1; i++) {
       rect(this.tail[i].x, this.tail[i].y, scl, scl);
     }
 

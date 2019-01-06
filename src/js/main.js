@@ -24,7 +24,7 @@ function mousePressed() {
 function draw() {
   background(51);
   snake.update();
-
+  snake.death();
   snake.show();
 
   if (snake.eat(food)) {
