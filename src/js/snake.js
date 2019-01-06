@@ -12,6 +12,16 @@ function snake(x, y, xSpeed, ySpeed) {
     this.ySpeed = y;
   }
 
+  //snake eats food
+  this.eat = function(pos) {
+    if (snake.x === food.x && snake.y === food.y) {
+      return true;
+    } else {
+      return false;
+    }
+
+  }
+
   //makes snake move
   this.update = function() {
     this.x = this.x + this.xSpeed * scl;
