@@ -5,6 +5,8 @@ function snake(x, y, xSpeed, ySpeed) {
   this.y = 0;
   this.xSpeed = 1;
   this.ySpeed = 0;
+  this.total= 0;
+  this.tail = [];
 
   //changes snake direction
   this.dir = function(x,y) {
@@ -14,7 +16,9 @@ function snake(x, y, xSpeed, ySpeed) {
 
   //snake eats food
   this.eat = function(pos) {
-    if (snake.x === food.x && snake.y === food.y) {
+    if (dist(this.x, this.y, food.x,food.y) < 2) {
+      this.total++;
+      console.log(this.total);
       return true;
     } else {
       return false;
@@ -24,6 +28,13 @@ function snake(x, y, xSpeed, ySpeed) {
 
   //makes snake move
   this.update = function() {
+
+    this.tail[this.total -1] = createVector(this.x, this.y);
+
+    for(var i = 0; i < this.total-1; i++) {
+      this.tail[i] = this.tail[i+1];
+    }
+
     this.x = this.x + this.xSpeed * scl;
     this.y = this.y + this.ySpeed * scl;
 
@@ -34,6 +45,11 @@ function snake(x, y, xSpeed, ySpeed) {
   //draws snake  on canvas
   this.show = function() {
     fill(255);
+
+    for (var i = 0; i < this.total; i++) {
+      rect(this.tail[i].x, this.tail[i].y, scl, scl);
+    }
+
     rect(this.x, this.y, scl, scl);
   }
 
