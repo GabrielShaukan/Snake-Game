@@ -6,8 +6,17 @@ function setup() {
   createCanvas(600, 600);
   snake = new snake();
   frameRate(10);
-  food = createVector(random(width), random(height));
+  pickLocation();
 }
+
+function pickLocation() {
+  var cols = (width/scl);
+  var rows = (height/scl);
+
+  food = createVector(floor(random(cols)), floor(random(rows)));
+  food.mult(scl);
+}
+
 
 function draw() {
   background(51);

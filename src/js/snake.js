@@ -17,8 +17,8 @@ function snake(x, y, xSpeed, ySpeed) {
     this.x = this.x + this.xSpeed * scl;
     this.y = this.y + this.ySpeed * scl;
 
-    this.x = constrain(this.x, 0, width - (scl/2 + 1));
-    this.y = constrain(this.y, 0, height- scl/2);
+    this.x = constrain(this.x, 0, width - (scl+1));
+    this.y = constrain(this.y, 0, height- (scl+1));
   }
 
   //draws snake  on canvas
