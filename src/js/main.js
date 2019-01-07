@@ -1,6 +1,8 @@
 var snake;
 var scl = 20;
 var food;
+hihi
+
 
 function setup() {
   createCanvas(600, 600).position((windowWidth - width)/2, (windowHeight - height)/2);
@@ -27,8 +29,10 @@ function draw() {
   snake.death();
   snake.show();
 
+
   if (snake.eat(food)) {
-    pickLocation();
+    pickLocation()
+    select('#score').html("Score: " + (snake.total-1));
   }
 
   fill(255, 0, 10);
