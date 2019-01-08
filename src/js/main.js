@@ -1,15 +1,35 @@
 var snake;
 var scl = 20;
 var food;
-hihi
 
 
 function setup() {
-  createCanvas(600, 600).position((windowWidth - width)/2, (windowHeight - height)/2);
+  createCanvas(600, 600).position((windowWidth - width)/2, ((windowHeight - height)-100));
   snake = new snake();
   frameRate(10);
   pickLocation();
+
+  select('#small').mousePressed(createSmallCanvas);
+  select('#medium').mousePressed(createMediumCanvas);
+  select('#large').mousePressed(createLargeCanvas);
 }
+
+function createSmallCanvas() {
+  createCanvas(400, 400).position((windowWidth - width)/2, (windowHeight - height)/2);
+  snake.xSpeed = 0;
+  pickLocation();
+}
+
+function createMediumCanvas() {
+  createCanvas(600, 600).position((windowWidth - width)/2, ((windowHeight - height) - 100));
+  snake.xSpeed = 0;
+  pickLocation();
+}
+
+function createLargeCanvas() {
+  createCanvas(700, 700).position((windowWidth - width)/2, ((windowHeight - height) - 20 ));
+  snake.xSpeed = 0;
+  pickLocation();}
 
 function pickLocation() {
   var cols = (width/scl);
@@ -19,16 +39,11 @@ function pickLocation() {
   food.mult(scl);
 }
 
-function mousePressed() {
-  snake.total++
-}
-
 function draw() {
   background(51);
   snake.update();
   snake.death();
   snake.show();
-
 
   if (snake.eat(food)) {
     pickLocation()
